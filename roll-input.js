@@ -354,7 +354,7 @@ class RollInput {
 						'die' + this._numDice,
 						{
 							get: () => {
-								t.getValue();
+								return t.totalAdjustment();
 							}
 						}
 					);
