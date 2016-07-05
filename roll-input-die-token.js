@@ -135,6 +135,10 @@ class RollInputDieToken extends RollInputToken {
 		this.result = initialDice;
 	}
 
+	toString() {
+		return this.totalAdjustment();
+	}
+
 	totalAdjustment() {
 		var result = 0;
 		for (var i = 0; i < this.kept.length; i++) {
