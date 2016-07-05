@@ -13,17 +13,29 @@ class RollInputDieToken extends RollInputToken {
 		this.exploding = data.exploding ? true : false;
 		this.rerollBreak = data.rerollBreak ? data.rerollBreak : null;
 		this.maxRerolls = data.maxRerolls ? data.maxRerolls : 1;
+		this._debug = [];
 	}
 
 	formatResult() {
 		var result = '';
 		result += this.number + 'd' + this.size;
-		result += ' (';
-		for (var i = 0; i < this.result.length; i++) {
-			if (i != 0) {
-				result += ', ';
+		if (this.keep) {
+			result += 'k';
+			if (this.keepLow) {
+				result += 'l';
+			} else {
+				result += 'h';
 			}
-			result += this.result[i].total;
+			result += this.keep;
+		}
+		result += ' (';
+		if (this.result) {
+			for (var i = 0; i < this.result.length; i++) {
+				if (i != 0) {
+					result += ', ';
+				}
+				result += this.result[i].total;
+			}
 		}
 		result += ')';
 		return result;
@@ -67,7 +79,6 @@ class RollInputDieToken extends RollInputToken {
 			initialDice.push(token);
 		}
 
-		this.totalResult = 0;
 		if (this.keep) {
 			var toKeep = [];
 			for (var i = 0; i < initialDice.length; i++) {
@@ -110,6 +121,7 @@ class RollInputDieToken extends RollInputToken {
 					}
 				}
 			}
+			this._debug.push('a');
 			this.kept = toKeep;
 		} else {
 			var toKeep = [];
@@ -117,17 +129,16 @@ class RollInputDieToken extends RollInputToken {
 				toKeep.push(initialDice[i]);
 			}
 			this.kept = toKeep;
+			this._debug.push('b');
 		}
-
-		console.log('in die token execute', this);
 
 		this.result = initialDice;
 	}
 
 	totalAdjustment() {
 		var result = 0;
-		for (var i = 0; i < this.result.length; i++) {
-			result += this.result[i].total;
+		for (var i = 0; i < this.kept.length; i++) {
+			result += this.kept[i].total;
 		}
 		return result;
 	}

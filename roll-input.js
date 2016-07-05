@@ -6,10 +6,8 @@ const RollInputNumberToken = require('./roll-input-number-token.js');
 
 class RollInput {
 	constructor(data) {
-		this.description = data.description;
-		this.isAttack = data.isAttack ? true : false;
-		this.isDamage = data.isDamage ? true : false;
-		this.tokenObjects = [];
+		this.description = data ? data.description ? data.description : '' : '';
+		this.tokenObjects = new Array();
 
 		Object.defineProperty(
 			this,
