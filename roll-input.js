@@ -19,6 +19,16 @@ class RollInput {
 			}
 		);
 
+		Object.defineProperty(
+			this,
+			'_numDice',
+			{
+				enumerable: false,
+				writable: true,
+				value: 0
+			}
+		);
+
 		this.setupLexer();
 	}
 
@@ -339,6 +349,16 @@ class RollInput {
 					lastCommentable = t;
 					lastMultiDice = t;
 					lastOnePlusDice = t;
+					Object.addProperty(
+						this,
+						'die' + this._numDice,
+						{
+							get: () => {
+								t.getValue();
+							}
+						}
+					);
+					this._numDice++;
 					this.tokenObjects.push(t);
 					break;
 				case '+':
