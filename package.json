@@ -1,0 +1,25 @@
+{
+  "name": "maria-dice",
+  "version": "1.0.0",
+  "description": "Advanced dice rolling module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/negativeview/maria-dice.git"
+  },
+  "keywords": [
+    "dice"
+  ],
+  "author": "Daniel Grace",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/negativeview/maria-dice/issues"
+  },
+  "homepage": "https://github.com/negativeview/maria-dice#readme",
+  "dependencies": {
+    "lex": "^1.7.9"
+  }
+}
