@@ -349,7 +349,7 @@ class RollInput {
 					lastCommentable = t;
 					lastMultiDice = t;
 					lastOnePlusDice = t;
-					Object.addProperty(
+					Object.defineProperty(
 						this,
 						'die' + this._numDice,
 						{
