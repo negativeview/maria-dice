@@ -121,7 +121,6 @@ class RollInputDieToken extends RollInputToken {
 					}
 				}
 			}
-			this._debug.push('a');
 			this.kept = toKeep;
 		} else {
 			var toKeep = [];
@@ -129,7 +128,6 @@ class RollInputDieToken extends RollInputToken {
 				toKeep.push(initialDice[i]);
 			}
 			this.kept = toKeep;
-			this._debug.push('b');
 		}
 
 		this.result = initialDice;

@@ -21,6 +21,17 @@ class RollInput {
 
 		Object.defineProperty(
 			this,
+			'simple',
+			{
+				enumerable: false,
+				get: () => {
+					return this._format_simple()
+				}
+			}
+		);
+
+		Object.defineProperty(
+			this,
 			'toString',
 			{
 				enumerable: false,
