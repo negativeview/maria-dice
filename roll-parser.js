@@ -371,6 +371,8 @@ class RollParser {
 		for (var i = 0; i < this.tokens.length; i++) {
 			rollInput.addToken(this.tokens[i]);
 		}
+
+		return rollInput;
 	}
 }
 
