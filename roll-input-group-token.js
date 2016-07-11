@@ -45,6 +45,7 @@ class RollInputGroupToken extends RollInputToken {
 					this.operation = 'full-group';
 
 					if (index != 0 && arr[index - 1].type == 'number') {
+						console.log('pulling repeat from', arr[index - 1]);
 						this.repeat = arr[index - 1].lexeme;
 						arr.splice(index - 1, 1);
 					} else {
