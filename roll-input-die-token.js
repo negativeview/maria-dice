@@ -75,6 +75,7 @@ class RollInputDieToken extends RollInputToken {
 			}
 
 			token.total = 0;
+			token.kept = false;
 			for (var m = 0; m < token.diceKeeps.length; m++) {
 				token.total += token.diceKeeps[m];
 			}
@@ -120,6 +121,17 @@ class RollInputDieToken extends RollInputToken {
 							toKeep[curLowest] = initialDice[i];
 						}
 
+					}
+				}
+			}
+			for (var i = 0; i < toKeep.length; i++) {
+				for (var m = 0; m < initialDice; m++) {
+					if (
+						!initialDice[m].kept &&
+						initialDice[m].total == toKeep[i].total
+					) {
+						initialDice[m].kept = true;
+						break;
 					}
 				}
 			}
