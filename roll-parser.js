@@ -4,6 +4,7 @@ const RollInput = require('./roll-input.js');
 const RollInputDieToken = require('./roll-input-die-token.js');
 const RollInputGroupToken = require('./roll-input-group-token.js');
 const RollInputMathToken = require('./roll-input-math-token.js');
+const SingleDieInputToken = require('./single-die-input-token.js');
 
 class RollParser {
 	constructor() {
@@ -317,24 +318,31 @@ class RollParser {
 					tokenObjects.push(t);
 					break;
 				case 'die':
-					var t = new RollInputDieToken(
-						{
-							number: token.number,
-							size: token.dieSize
-						}
-					);
-					lastCommentable = t;
-					lastMultiDice = t;
-					lastOnePlusDice = t;
-					Object.defineProperty(
-						this,
-						'die' + this._numDice,
-						{
-							get: () => {
-								return t;
+					if (token.number == 1) {
+						var t = new SingleDieInputToken();
+						lastCommentable = t;
+						lastOnePlusDice = t;
+						lastMultiDice = t;
+					} else {
+						var t = new RollInputDieToken(
+							{
+								number: token.number,
+								size: token.dieSize
 							}
-						}
-					);
+						);
+						lastCommentable = t;
+						lastMultiDice = t;
+						lastOnePlusDice = t;
+						Object.defineProperty(
+							this,
+							'die' + this._numDice,
+							{
+								get: () => {
+									return t;
+								}
+							}
+						);
+					}
 					this._numDice++;
 					tokenObjects.push(t);
 					break;
