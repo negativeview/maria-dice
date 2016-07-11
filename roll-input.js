@@ -416,11 +416,6 @@ class RollInput {
 	}
 
 	execute() {
-		for (var i = 0; i < this.tokenObjects.length; i++) {
-			var ob = this.tokenObjects[i];
-			ob.execute();
-		}
-
 		while(true) {
 			var didUpdate = false;
 			for (var i = 0; i < this.tokenObjects.length; i++) {
@@ -429,6 +424,11 @@ class RollInput {
 				if (didUpdate) break;
 			}
 			if (!didUpdate) break;
+		}
+
+		for (var i = 0; i < this.tokenObjects.length; i++) {
+			var ob = this.tokenObjects[i];
+			ob.execute();
 		}
 
 		console.log('tokenObjects', this.tokenObjects);
