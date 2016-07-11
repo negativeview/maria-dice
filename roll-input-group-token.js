@@ -43,6 +43,13 @@ class RollInputGroupToken extends RollInputToken {
 				if (arr[i].operation == 'end') {
 					this._doGroup(arr, index + 1, i);
 					this.operation = 'full-group';
+
+					if (index != 0 && arr[index - 1].type == 'number') {
+						this.repeat = arr[index - 1].lexeme;
+						arr.splice(index - 1, 1);
+					} else {
+						this.repeat = 1;
+					}
 					return true;
 				} else if (arr[i].operation == 'start') {
 					return false;
