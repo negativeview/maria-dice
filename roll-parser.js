@@ -1,9 +1,9 @@
 const lexer = require('lex');
+const NumericInputToken = require('./numeric-input-token.js');
 const RollInput = require('./roll-input.js');
 const RollInputDieToken = require('./roll-input-die-token.js');
 const RollInputGroupToken = require('./roll-input-group-token.js');
 const RollInputMathToken = require('./roll-input-math-token.js');
-const RollInputNumberToken = require('./roll-input-number-token.js');
 
 class RollParser {
 	constructor() {
@@ -355,11 +355,7 @@ class RollParser {
 					tokenObjects.push(t);
 					break;
 				case 'number':
-					var t = new RollInputNumberToken(
-						{
-							number: token.lexeme
-						}
-					);
+					var t = new NumericInputToken(token.lexeme);
 					lastCommentable = t;
 					tokenObjects.push(t);
 					break;

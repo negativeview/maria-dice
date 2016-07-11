@@ -48,7 +48,7 @@ class RollInputGroupToken extends RollInputToken {
 					this.keep = arr[i].keep;
 					this.keepLow = arr[i].keepLow;
 					this.exploding = arr[i].exploding;
-					this.rollrollBreak = arr[i].rerollBreak;
+					this.rerollBreak = arr[i].rerollBreak;
 					this.maxRerolls = arr[i].maxRerolls;
 					this.operation = 'full-group';
 					this._doGroup(arr, index + 1, i);
