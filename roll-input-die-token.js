@@ -31,6 +31,7 @@ class RollInputDieToken extends RollInputToken {
 		result += ' (';
 		if (this.result) {
 			for (var i = 0; i < this.result.length; i++) {
+				console.log('result', this.result[i]);
 				if (i != 0) {
 					result += ', ';
 				}
@@ -131,10 +132,6 @@ class RollInputDieToken extends RollInputToken {
 		}
 
 		this.result = initialDice;
-	}
-
-	toString() {
-		return this.totalAdjustment();
 	}
 
 	totalAdjustment() {
