@@ -144,6 +144,10 @@ class RollInputDieToken extends RollInputToken {
 			this.kept = toKeep;
 		}
 
+		for (var i = 0; i < this.kept.length; i++) {
+			this.kept[i].kept = true;
+		}
+
 		this.result = initialDice;
 	}
 
