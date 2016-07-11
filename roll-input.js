@@ -48,7 +48,7 @@ class RollInput {
 	}
 
 	addToken(token) {
-		this.tokenObjects.append(token);
+		this.tokenObjects.push(token);
 	}
 
 	execute() {
