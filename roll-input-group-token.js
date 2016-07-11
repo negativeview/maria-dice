@@ -45,6 +45,12 @@ class RollInputGroupToken extends RollInputToken {
 			for (var i = index + 1; i < arr.length; i++) {
 				if (arr[i].operation == 'end') {
 					this._doGroup(arr, index + 1, i);
+					this.comment = arr[i].comment;
+					this.keep = arr[i].keep;
+					this.keepLow = arr[i].keepLow;
+					this.exploding = arr[i].exploding;
+					this.rollrollBreak = arr[i].rerollBreak;
+					this.maxRerolls = arr[i].maxRerolls;
 					this.operation = 'full-group';
 
 					if (index != 0 && arr[index - 1].type == 'number') {

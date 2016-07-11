@@ -13,7 +13,6 @@ class RollInputDieToken extends RollInputToken {
 		this.exploding = data.exploding ? true : false;
 		this.rerollBreak = data.rerollBreak ? data.rerollBreak : null;
 		this.maxRerolls = data.maxRerolls ? data.maxRerolls : 1;
-		this._debug = [];
 	}
 
 	formatResult() {

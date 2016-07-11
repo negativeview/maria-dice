@@ -52,7 +52,6 @@ class RollInput {
 	}
 
 	execute() {
-		console.log('tokenObjectsPre', this.tokenObjects);
 		while(true) {
 			var didUpdate = false;
 			for (var i = 0; i < this.tokenObjects.length; i++) {
