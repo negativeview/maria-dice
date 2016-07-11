@@ -426,8 +426,6 @@ class RollInput {
 			if (!didUpdate) break;
 		}
 
-		console.log('after group', this.tokenObjects);
-
 		for (var i = 0; i < this.tokenObjects.length; i++) {
 			var ob = this.tokenObjects[i];
 			ob.execute();
