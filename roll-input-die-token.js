@@ -30,8 +30,9 @@ class RollInputDieToken extends RollInputToken {
 		}
 		result += ' (';
 		if (this.result) {
+			console.log('result', this.result);
+			console.log('kept', this.kept);
 			for (var i = 0; i < this.result.length; i++) {
-				console.log('result', this.result[i]);
 				if (i != 0) {
 					result += ', ';
 				}
