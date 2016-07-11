@@ -1,8 +1,3 @@
-const RollInputDieToken = require('./roll-input-die-token.js');
-const RollInputGroupToken = require('./roll-input-group-token.js');
-const RollInputMathToken = require('./roll-input-math-token.js');
-const RollInputNumberToken = require('./roll-input-number-token.js');
-
 class RollInput {
 	constructor(data) {
 		this.description = data ? data.description ? data.description : '' : '';
@@ -50,6 +45,10 @@ class RollInput {
 				value: 0
 			}
 		);
+	}
+
+	addToken(token) {
+		this.tokenObjects.append(token);
 	}
 
 	execute() {

@@ -1,5 +1,9 @@
 const lexer = require('lex');
 const RollInput = require('./roll-input.js');
+const RollInputDieToken = require('./roll-input-die-token.js');
+const RollInputGroupToken = require('./roll-input-group-token.js');
+const RollInputMathToken = require('./roll-input-math-token.js');
+const RollInputNumberToken = require('./roll-input-number-token.js');
 
 class RollParser {
 	constructor() {
