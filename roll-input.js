@@ -284,6 +284,8 @@ class RollInput {
 		this.lex.setInput(string);
 		this.lex.lex();
 
+		console.log(this.tokens);
+
 		var lastCommentable = null;
 		var lastMultiDice = null;
 		var lastOnePlusDice = null;
