@@ -232,6 +232,7 @@ class RollParser {
 	 */
 	parse(string) {
 		var rollInput = new RollInput();
+		var tokenObjects = [];
 
 		this.tokens = [];
 		this.lex.setInput(string);
@@ -294,7 +295,7 @@ class RollParser {
 							operation: 'start'
 						}
 					);
-					this.tokenObjects.push(t);
+					tokenObjects.push(t);
 					break;
 				case 'end-group':
 					var t = new RollInputGroupToken(
@@ -305,7 +306,7 @@ class RollParser {
 					lastCommentable = t;
 					lastMultiDice = t;
 					lastOnePlusDice = t;
-					this.tokenObjects.push(t);
+					tokenObjects.push(t);
 					break;
 				case 'comma':
 					var t = new RollInputMathToken(
@@ -313,7 +314,7 @@ class RollParser {
 							token: ','
 						}
 					);
-					this.tokenObjects.push(t);
+					tokenObjects.push(t);
 					break;
 				case 'die':
 					var t = new RollInputDieToken(
@@ -335,7 +336,7 @@ class RollParser {
 						}
 					);
 					this._numDice++;
-					this.tokenObjects.push(t);
+					tokenObjects.push(t);
 					break;
 				case '+':
 					var t = new RollInputMathToken(
@@ -343,7 +344,7 @@ class RollParser {
 							token: '+'
 						}
 					);
-					this.tokenObjects.push(t);
+					tokenObjects.push(t);
 					break;
 				case '-':
 					var t = new RollInputMathToken(
@@ -351,7 +352,7 @@ class RollParser {
 							token: '-'
 						}
 					);
-					this.tokenObjects.push(t);
+					tokenObjects.push(t);
 					break;
 				case 'number':
 					var t = new RollInputNumberToken(
@@ -360,7 +361,7 @@ class RollParser {
 						}
 					);
 					lastCommentable = t;
-					this.tokenObjects.push(t);
+					tokenObjects.push(t);
 					break;
 				default:
 					console.log(token);
