@@ -22,9 +22,9 @@ class SingleDieInputToken extends NumericInputToken {
 			var dieResult = Math.floor(Math.random() * (max - min + 1)) + min;
 			this.result.addResult(dieResult);
 
-			if (rerollBreak < 0) break;
-			if (dieResult >= rerollBreak) break;
-			if (rerolls > maxRerolls) break;
+			if (this.rerollBreak < 0) break;
+			if (dieResult >= this.rerollBreak) break;
+			if (rerolls > this.maxRerolls) break;
 
 			rerolls++;
 		}
