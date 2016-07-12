@@ -13,6 +13,13 @@ class MultiDieInputToken extends NumericInputToken {
 		this.result = null;
 	}
 
+	formatResult() {
+		var res = this.dieNumber + 'd' + this.dieSize + ' (';
+		res += this.result.getResults().join(', ');
+		res += ')';
+		return res;
+	}
+
 	execute() {
 		var singleDie = new SingleDieInputToken(this.dieSize);
 		singleDie.exploding = this.exploding;
