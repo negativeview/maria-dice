@@ -44,7 +44,7 @@ class MultiDieInputToken extends NumericInputToken {
 
 		console.log('a');
 		if (this.keep > 0) {
-			console.log('b');
+			console.log('b', this.keep, this.innerDice);
 			var toRemove = this.innerDice.length - this.keep;
 			if (toRemove <= 0) return;
 
