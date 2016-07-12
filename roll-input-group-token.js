@@ -81,7 +81,11 @@ class RollInputGroupToken extends RollInputToken {
 	}
 
 	formatResult() {
-		var result = '{';
+		var result = '';
+		if (this.repeat !== 1) {
+			result += this.repeat + ' ';
+		}
+		result += '{';
 		// NOTE: -1 because we don't want to formatResult on the ending token
 		for (var i = 0; i < this.internal.length - 1; i++) {
 			result += this.internal[i].formatResult();
