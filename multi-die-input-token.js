@@ -56,12 +56,10 @@ class MultiDieInputToken extends NumericInputToken {
 						continue;
 					}
 
-					console.log(this.innerDice[i].getResult(), 'vs', this.innerDice[index].getResult());
-
-					if (this.keepLow && this.innerDice[i].getResult() < this.innerDice[index].getResult()) {
+					if (this.keepLow && this.innerDice[i].getResult().getResults()[0] < this.innerDice[index].getResult().getResults()[0]) {
 						index = i;
 					}
-					if (!this.keepLow && this.innerDice[i].getResult() > this.innerDice[index].getResult()) {
+					if (!this.keepLow && this.innerDice[i].getResult().getResults()[0] > this.innerDice[index].getResult().getResults()[0]) {
 						index = i;
 					}
 				}
