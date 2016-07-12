@@ -1,4 +1,5 @@
 const RollInputToken = require('./roll-input-token.js');
+const RollResult = require('./roll-result.js');
 
 class RollInputGroupToken extends RollInputToken {
 	constructor(data) {
