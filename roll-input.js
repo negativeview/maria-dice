@@ -111,10 +111,13 @@ class RollInput {
 			if (i != 0) {
 				result += ' ';
 			}
-			result += this.tokenObjects[i].formatResult();
-			total += this.tokenObjects[i].totalAdjustment() * modifier;
+			if (this.tokenObjects[i].formatResult)
+				result += this.tokenObjects[i].formatResult();
+			if (this.tokenObjects[i].totalAdjustment)
+				total += this.tokenObjects[i].totalAdjustment() * modifier;
 			modifier = 1;
-			modifier = this.tokenObjects[i].modifier(modifier);
+			if (this.tokenObjects[i].modifier)
+				modifier = this.tokenObjects[i].modifier(modifier);
 		}
 		result += ' = ';
 		result += total;
