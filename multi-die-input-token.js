@@ -20,7 +20,7 @@ class MultiDieInputToken extends NumericInputToken {
 		var res = this.dieNumber + 'd' + this.dieSize + ' (';
 		res += this.result.getResults().map(
 			(currentValue, index, array) => {
-				return currentValue.getResults()[0];
+				return currentValue.getResult();
 			}
 		).join(', ');
 		res += ')';
