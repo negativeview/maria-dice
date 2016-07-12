@@ -39,6 +39,7 @@ class MultiDieInputToken extends NumericInputToken {
 			singleDie.keep = true;
 
 			singleDie.execute();
+			this.innerDice.push(singleDie);
 			this.result.addResult(singleDie);
 		}
 
