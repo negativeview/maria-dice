@@ -11,18 +11,20 @@ class RollInputGroupToken extends RollInputToken {
 
 	execute() {
 		this.result = new RollResult();
-		console.log('internal', this.internal);
-		for (var i = 0; i < this.internal.length - 1; i++) {
-			var ob = this.internal[i];
-			if (ob.execute)
-				ob.execute();
-			if (ob.getResult) {
-				this.result.addResult(ob.getResult());
+		for (var m = 0; m < this.repeat; m++) {
+			for (var i = 0; i < this.internal.length - 1; i++) {
+				var ob = this.internal[i];
+				if (ob.execute)
+					ob.execute();
+				if (ob.getResult) {
+					this.result.addResult(ob.getResult());
+				}
 			}
 		}
 	}
 
 	getAmount() {
+		console.log('group tokens result', this.result);
 		var lastToken = this.internal[this.internal.length-1];
 		if (lastToken.keep) {
 			var highestIndex = -1;
