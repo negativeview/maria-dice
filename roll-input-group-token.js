@@ -15,7 +15,7 @@ class RollInputGroupToken extends RollInputToken {
 		}
 	}
 
-	totalAdjustment() {
+	getAmount() {
 		var lastToken = this.internal[this.internal.length-1];
 		if (lastToken.keep) {
 			var highestIndex = -1;
@@ -23,7 +23,7 @@ class RollInputGroupToken extends RollInputToken {
 				var token = this.internal[i];
 				if (
 					highestIndex == -1 ||
-					token.totalAdjustment() > this.internal[highestIndex].totalAdjustment()
+					token.getAmount() > this.internal[highestIndex].getAmount()
 				) {
 					highestIndex = i;
 				}
@@ -31,7 +31,7 @@ class RollInputGroupToken extends RollInputToken {
 			if (highestIndex == -1) {
 				return 0;
 			}
-			return this.internal[highestIndex].totalAdjustment();
+			return this.internal[highestIndex].getAmount();
 		}
 	}
 
@@ -81,12 +81,12 @@ class RollInputGroupToken extends RollInputToken {
 	}
 
 	formatResult() {
-		var result = '{{';
+		var result = '{';
 		// NOTE: -1 because we don't want to formatResult on the ending token
 		for (var i = 0; i < this.internal.length - 1; i++) {
 			result += this.internal[i].formatResult();
 		}
-		result += '}}';
+		result += '}';
 		result += this.internal[this.internal.length-1].formatTags();
 		return result;
 	}
