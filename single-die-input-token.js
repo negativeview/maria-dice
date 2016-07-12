@@ -34,3 +34,5 @@ class SingleDieInputToken extends NumericInputToken {
 		return this.result;
 	}
 }
+
+module.exports = SingleDieInputToken;

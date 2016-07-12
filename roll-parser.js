@@ -1,4 +1,5 @@
 const lexer = require('lex');
+const MultiDieInputToken = require('./multi-die-input-token.js');
 const NumericInputToken = require('./numeric-input-token.js');
 const RollInput = require('./roll-input.js');
 const RollInputDieToken = require('./roll-input-die-token.js');
@@ -319,29 +320,15 @@ class RollParser {
 					break;
 				case 'die':
 					if (token.number == 1) {
-						var t = new SingleDieInputToken();
+						var t = new SingleDieInputToken(token.dieSize);
 						lastCommentable = t;
 						lastOnePlusDice = t;
 						lastMultiDice = t;
 					} else {
-						var t = new RollInputDieToken(
-							{
-								number: token.number,
-								size: token.dieSize
-							}
-						);
+						var t = new MultiDieInputToken(token.number, token.dieSize);
 						lastCommentable = t;
 						lastMultiDice = t;
 						lastOnePlusDice = t;
-						Object.defineProperty(
-							this,
-							'die' + this._numDice,
-							{
-								get: () => {
-									return t;
-								}
-							}
-						);
 					}
 					this._numDice++;
 					tokenObjects.push(t);
