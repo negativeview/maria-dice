@@ -21,7 +21,11 @@ class MultiDieInputToken extends NumericInputToken {
 		res += this.result.getResults().map(
 			(currentValue, index, array) => {
 				var r = currentValue.getResult();
-				return currentValue.keep + '(' + r.getResults()[0] + ')';
+				if (!currentValue.keep) {
+					return '~~' + r.getResults()[0] + '~~';
+				} else {
+					return r.getResults()[0];
+				}
 			}
 		).join(', ');
 		res += ')';
@@ -56,10 +60,10 @@ class MultiDieInputToken extends NumericInputToken {
 						continue;
 					}
 
-					if (this.keepLow && this.innerDice[i].getResult().getResults()[0] < this.innerDice[index].getResult().getResults()[0]) {
+					if (this.keepLow && this.innerDice[i].getResult().getResults()[0] > this.innerDice[index].getResult().getResults()[0]) {
 						index = i;
 					}
-					if (!this.keepLow && this.innerDice[i].getResult().getResults()[0] > this.innerDice[index].getResult().getResults()[0]) {
+					if (!this.keepLow && this.innerDice[i].getResult().getResults()[0] < this.innerDice[index].getResult().getResults()[0]) {
 						index = i;
 					}
 				}
