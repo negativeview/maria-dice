@@ -5,13 +5,19 @@ class RollInputGroupToken extends RollInputToken {
 		data.type = 'group';
 		super(data);
 		this.operation = data.operation;
+		this.result = null;
 	}
 
 	execute() {
+		this.result = new RollResult();
+		console.log('internal', this.internal);
 		for (var i = 0; i < this.internal.length - 1; i++) {
 			var ob = this.internal[i];
 			if (ob.execute)
 				ob.execute();
+			if (ob.getResult) {
+				this.result.addResult(ob.getResult());
+			}
 		}
 	}
 
@@ -58,7 +64,6 @@ class RollInputGroupToken extends RollInputToken {
 						this.repeat = arr[index - 1].number;
 						arr.splice(index - 1, 1);
 					} else {
-						console.log('index', index, 'previous', arr[index - 1]);
 						this.repeat = 1;
 					}
 					return true;
