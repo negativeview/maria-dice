@@ -23,28 +23,17 @@ class RollInputGroupToken extends RollInputToken {
 		}
 	}
 
+	/**
+	 * TODO: Handle kh1/kl1, etc.
+	 **/
 	getAmount() {
-		for (var i = 0; i < this.result.results.length; i++) {
-			var result = this.result.results[i];
-			console.log('result', result);
-		}
-		var lastToken = this.internal[this.internal.length-1];
-		if (lastToken.keep) {
-			var highestIndex = -1;
-			for (var i = 0; i < this.internal.length - 1; i++) {
-				var token = this.internal[i];
-				if (
-					highestIndex == -1 ||
-					token.getAmount() > this.internal[highestIndex].getAmount()
-				) {
-					highestIndex = i;
-				}
+		var amount = 0;
+		this.result.getResults().map(
+			(currentValue, index, array) => {
+				amount += currentValue.getAmount();
 			}
-			if (highestIndex == -1) {
-				return 0;
-			}
-			return this.internal[highestIndex].getAmount();
-		}
+		);
+		return amount;
 	}
 
 	_doGroup(arr, start, e) {
