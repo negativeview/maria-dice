@@ -42,18 +42,25 @@ class MultiDieInputToken extends NumericInputToken {
 			this.result.addResult(singleDie);
 		}
 
+		console.log('a');
 		if (this.keep > 0) {
+			console.log('b');
 			var toRemove = this.innerDice.length - this.keep;
 			if (toRemove <= 0) return;
 
+			console.log('c');
 			for (; toRemove > 0; toRemove--) {
+				console.log('d');
 				var index = -1;
 				for (var i = 0; i < this.result.length; i++) {
+					console.log('e');
 					if (this.result[i].keep == false) continue;
+					console.log('f');
 					if (index == -1) {
 						index = i;
 						continue;
 					}
+					console.log('g');
 
 					if (this.keepLow && this.result[i].getResult() > this.result[index].getResult()) {
 						index = i;
@@ -63,8 +70,10 @@ class MultiDieInputToken extends NumericInputToken {
 					}
 				}
 
+				console.log('h');
 				if (index == -1) break;
 				this.result[index].keep = false;
+				console.log('i');
 			}
 		}
 	}
