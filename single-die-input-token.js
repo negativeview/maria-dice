@@ -19,6 +19,15 @@ class SingleDieInputToken extends NumericInputToken {
 		return res;
 	}
 
+	getAmount() {
+		var amount = 0;
+		var results = this.result.getResults();
+		for (var i = 0; i < results.length; i++) {
+			amount += results[i];
+		}
+		return amount;
+	}
+
 	formatResultSimple() {
 		return this.result.getResults().join(', ');
 	}
