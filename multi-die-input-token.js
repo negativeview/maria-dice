@@ -21,8 +21,8 @@ class MultiDieInputToken extends NumericInputToken {
 		this.result = new RollResult();
 
 		for (var i = 0; i < this.dieNumber; i++) {
-			this.singleDie.execute();
-			this.result.addResult(this.singleDie.getResult());
+			singleDie.execute();
+			this.result.addResult(singleDie.getResult());
 		}
 	}
 
