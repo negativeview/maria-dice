@@ -34,7 +34,7 @@ class SingleDieInputToken extends NumericInputToken {
 
 			if (this.rerollBreak > 0 && dieResult < this.rerollBreak) keepGoing = true;
 			if (this.exploding && dieResult == this.dieSize) keepGoing = true;
-			if (rerolls > this.maxRerolls) keepGoing = false;
+			if (this.maxRerolls !== -1 && rerolls > this.maxRerolls) keepGoing = false;
 
 			console.log('single die debug', 'exploding: ' + this.exploding, 'result: ' + dieResult, 'keepGoing: ' + keepGoing);
 
