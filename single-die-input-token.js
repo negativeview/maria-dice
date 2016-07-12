@@ -29,6 +29,8 @@ class SingleDieInputToken extends NumericInputToken {
 		var keepGoing = true;
 
 		while(keepGoing) {
+			keepGoing = false;
+			
 			var dieResult = Math.floor(Math.random() * (max - min + 1)) + min;
 			this.result.addResult(dieResult);
 
