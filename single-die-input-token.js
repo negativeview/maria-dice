@@ -14,9 +14,13 @@ class SingleDieInputToken extends NumericInputToken {
 	formatResult() {
 		console.log('in format results', this.result);
 		var res = '1d' + this.dieSize + ' (';
-		res += this.result.getResults().join(', ');
+		res += this.formatResultSimple();
 		res += ')';
 		return res;
+	}
+
+	formatResultSimple() {
+		return this.result.getResults().join(', ');
 	}
 
 	execute() {
@@ -30,7 +34,7 @@ class SingleDieInputToken extends NumericInputToken {
 
 		while(keepGoing) {
 			keepGoing = false;
-			
+
 			var dieResult = Math.floor(Math.random() * (max - min + 1)) + min;
 			this.result.addResult(dieResult);
 
