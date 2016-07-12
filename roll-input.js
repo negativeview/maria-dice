@@ -75,6 +75,7 @@ class RollInput {
 
 	/**
 	 * TODO: Make this able to do different formats?
+	 * Actually, probably move formatting out into another place...
 	 **/
 	formatResult(user) {
 		var diceFormat = 'standard';

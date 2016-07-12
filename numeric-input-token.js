@@ -6,8 +6,12 @@ class NumericInputToken extends InputToken {
 		this.number = parseInt(number);
 	}
 
+	formatResult() {
+		return this.number;
+	}
+
 	toValue() {
-		return number;
+		return this.number;
 	}
 }
 
