@@ -1,5 +1,6 @@
 const NumericInputToken = require('./numeric-input-token.js');
 const RollResult = require('./roll-result.js');
+const SingleDieInputToken = require('./single-die-input-token.js');
 
 class MultiDieInputToken extends NumericInputToken {
 	constructor(dieNumber, dieSize) {
