@@ -4,6 +4,7 @@ class NumericInputToken extends InputToken {
 	constructor(number) {
 		super();
 		this.number = parseInt(number);
+		this.type == 'number';
 	}
 
 	formatResult() {
