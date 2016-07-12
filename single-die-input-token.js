@@ -12,6 +12,7 @@ class SingleDieInputToken extends NumericInputToken {
 	}
 
 	formatResult() {
+		console.log('in format results', this.result);
 		var res = '1d' + this.dieSize + ' (';
 		res += this.result.getResults()[0];
 		res += ')';
