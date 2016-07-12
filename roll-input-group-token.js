@@ -58,6 +58,7 @@ class RollInputGroupToken extends RollInputToken {
 						this.repeat = arr[index - 1].number;
 						arr.splice(index - 1, 1);
 					} else {
+						console.log('index', index, 'previous', arr[index - 1]);
 						this.repeat = 1;
 					}
 					return true;
