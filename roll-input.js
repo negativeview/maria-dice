@@ -66,7 +66,8 @@ class RollInput {
 
 		for (var i = 0; i < this.tokenObjects.length; i++) {
 			var ob = this.tokenObjects[i];
-			ob.execute();
+			if (ob.execute)
+				ob.execute();
 		}
 
 		console.log('tokenObjects', this.tokenObjects);
