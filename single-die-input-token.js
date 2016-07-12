@@ -8,7 +8,7 @@ class SingleDieInputToken extends NumericInputToken {
 		this.exploding = false;
 		this.rerollBreak = -1;
 		this.maxRerolls = -1;
-		this.result = NULL;
+		this.result = null;
 	}
 
 	execute() {
