@@ -10,6 +10,10 @@ class NumericInputToken extends InputToken {
 		return this.number;
 	}
 
+	getAmount() {
+		return this.number;
+	}
+
 	toValue() {
 		return this.number;
 	}
