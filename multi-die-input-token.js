@@ -11,6 +11,9 @@ class MultiDieInputToken extends NumericInputToken {
 		this.rerollBreak = -1;
 		this.maxRerolls = -1;
 		this.result = null;
+		this.keep = -1;
+		this.keepLow = false;
+		this.innerDice = [];
 	}
 
 	formatResult() {
@@ -25,15 +28,16 @@ class MultiDieInputToken extends NumericInputToken {
 	}
 
 	execute() {
-		var singleDie = new SingleDieInputToken(this.dieSize);
-		singleDie.exploding = this.exploding;
-		singleDie.rerollBreak = this.rerollBreak;
-		singleDie.maxRerolls = this.maxRerolls;
+		this.innerDice = [];
 		this.result = new RollResult();
-
 		for (var i = 0; i < this.dieNumber; i++) {
+			var singleDie = new SingleDieInputToken(this.dieSize);
+			singleDie.exploding = this.exploding;
+			singleDie.rerollBreak = this.rerollBreak;
+			singleDie.maxRerolls = this.maxRerolls;
+
 			singleDie.execute();
-			this.result.addResult(singleDie.getResult());
+			this.result.addResult(singleDie);
 		}
 	}
 
