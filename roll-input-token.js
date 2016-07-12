@@ -5,7 +5,7 @@ class RollInputToken {
 		this.comment = data.comment;
 	}
 
-	totalAdjustment() {
+	getAmount() {
 		return 0;
 	}
 
