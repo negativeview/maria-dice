@@ -10,7 +10,8 @@ class RollInputGroupToken extends RollInputToken {
 	execute() {
 		for (var i = 0; i < this.internal.length - 1; i++) {
 			var ob = this.internal[i];
-			ob.execute();
+			if (ob.execute)
+				ob.execute();
 		}
 	}
 
