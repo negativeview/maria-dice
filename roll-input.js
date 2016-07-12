@@ -113,8 +113,8 @@ class RollInput {
 			}
 			if (this.tokenObjects[i].formatResult)
 				result += this.tokenObjects[i].formatResult();
-			if (this.tokenObjects[i].totalAdjustment)
-				total += this.tokenObjects[i].totalAdjustment() * modifier;
+			if (this.tokenObjects[i].getAmount)
+				total += this.tokenObjects[i].getAmount() * modifier;
 			modifier = 1;
 			if (this.tokenObjects[i].modifier)
 				modifier = this.tokenObjects[i].modifier(modifier);
