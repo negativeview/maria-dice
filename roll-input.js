@@ -56,7 +56,9 @@ class RollInput {
 			var didUpdate = false;
 			for (var i = 0; i < this.tokenObjects.length; i++) {
 				var ob = this.tokenObjects[i];
-				didUpdate = ob.group(this.tokenObjects, i);
+				if (ob.group) {
+					didUpdate = ob.group(this.tokenObjects, i);
+				}
 				if (didUpdate) break;
 			}
 			if (!didUpdate) break;
