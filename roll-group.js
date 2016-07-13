@@ -5,6 +5,22 @@ class RollGroup {
 		this.type = 'roll-group';
 		this.configuration = {};
 		this.rolls = [];
+
+		Object.defineProperty(
+			this,
+			'numericValue',
+			{
+				enumerable: true,
+				get: () => {
+					var value = 0;
+					for (var i = 0; i < this.rolls.length; i++) {
+						if (!this.rolls[i].rejected)
+							value += this.rolls[i].result;
+					}
+					return value;
+				}
+			}
+		);
 	}
 
 	addRoll(roll) {
