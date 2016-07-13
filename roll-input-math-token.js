@@ -1,7 +1,7 @@
 "use strict";
 
 class RollInputMathToken {
-	constructor() {
+	constructor(data) {
 		data.type = 'math';
 		this.token = data.token;
 	}
