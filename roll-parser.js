@@ -265,7 +265,7 @@ class RollParser {
 					if (!lastOnePlusDice) {
 						console.log('Cannot explode without a thing to go boom.');
 					} else {
-						lastOnePlusDice.exploding = true;
+						lastOnePlusDice.rollConfiguration.exploding = true;
 					}
 					break;
 				case 'keep-high':
