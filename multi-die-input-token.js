@@ -14,6 +14,7 @@ class MultiDieInputToken {
 			{
 				enumerable: false,
 				configurable: true,
+				writable: true,
 				value: []
 			}
 		);
