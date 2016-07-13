@@ -50,7 +50,7 @@ class SingleDieInputToken {
 			roll.configuration = this.rollConfiguration;
 			roll.why = 'why?';
 			roll.result = dieResult;
-			roll.rejected = NULL;
+			roll.rejected = null;
 
 			this.rollGroup.addRoll(roll);
 

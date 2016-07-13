@@ -8,7 +8,7 @@ class Roll {
 		this.why = 'basic-roll';
 		this.configuration = {};
 		this.result = -1;
-		this.rejected = NULL;
+		this.rejected = null;
 	}
 }
 
