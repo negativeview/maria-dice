@@ -1,3 +1,6 @@
+"use strict";
+
+const ExplicitGroup = require('./explicit-group.js');
 const RollInputToken = require('./roll-input-token.js');
 
 class RollInputGroupToken extends RollInputToken {
@@ -5,14 +8,19 @@ class RollInputGroupToken extends RollInputToken {
 		data.type = 'group';
 		super(data);
 		this.operation = data.operation;
+		this.explicitGroup = null;
 	}
 
 	execute() {
+		this.explicitGroup = new ExplicitGroup();
+
 		for (var m = 0; m < this.repeat; m++) {
 			for (var i = 0; i < this.internal.length - 1; i++) {
 				var ob = this.internal[i];
-				if (ob.execute)
+				if (ob.execute) {
 					ob.execute();
+					this.explicitGroup.addRoll(ob);
+				}
 			}
 		}
 		console.log('post execute', this);
