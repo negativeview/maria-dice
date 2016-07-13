@@ -60,7 +60,7 @@ class RollGroup {
 			if (currentIndex !== -1) {
 				this.rolls[currentIndex].rejected = 'keep-high-low';
 				currentIndex++;
-				while (currentIndex <= this.rolls.length && this.rolls[currentIndex].why != 'basic-roll') {
+				while (currentIndex < this.rolls.length && this.rolls[currentIndex].why != 'basic-roll') {
 					this.rolls[currentIndex].rejected = 'keep-high-low';
 					currentIndex++;
 				}
