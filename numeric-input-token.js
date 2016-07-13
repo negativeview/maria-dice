@@ -18,7 +18,7 @@ class NumericInputToken extends InputToken {
 	getResult() {
 		return {
 			type: 'raw-number',
-			number: this.number
+			numericValue: this.number
 		};
 	}
 

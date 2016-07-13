@@ -21,11 +21,10 @@ class RollInputGroupToken {
 				if (ob.execute) {
 					ob.execute();
 				}
-				if (ob.type !== 'math' && (ob.rollGroup || ob.getResult))
+				if ((ob.type !== 'math' && ob.type != 'symbol') && (ob.rollGroup || ob.getResult))
 					this.explicitGroup.addChild(ob.rollGroup ? ob.rollGroup : ob.getResult());
 			}
 		}
-		console.log('post execute', this);
 	}
 
 	getResult() {
