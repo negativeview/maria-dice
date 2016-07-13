@@ -12,12 +12,12 @@ class ExplicitGroup {
 	}
 
 	keepHighLow() {
-		if (!this.configuration.keep) return;
-
 		for (var i = 0; i < this.children; i++) {
 			var child = this.children[i];
 			if (child.keepHighLow) child.keepHighLow();
 		}
+
+		if (!this.configuration.keep) return;
 
 		this._keepHighLow(
 			this.configuration.keepLow ? this._keepLow : this._keepHigh,
