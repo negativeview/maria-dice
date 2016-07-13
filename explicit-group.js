@@ -61,7 +61,7 @@ class ExplicitGroup {
 
 		console.log('in explicit group keep high low', toRemove);
 		while (toRemove) {
-			console.log('ping');
+			//console.log('ping');
 			var currentIndex = -1;
 
 			for (var i = 0; i < this.children.length; i++) {
