@@ -80,7 +80,11 @@ class RollInput {
 				ob.execute();
 			}
 			if (ob.getResult) {
-				this.result.addPart(ob.getResult());
+				var result = ob.getResult();
+				if (result.keepHighLow) {
+					result.keepHighLow();
+				}
+				this.result.addPart(result);
 			}
 		}
 	}
