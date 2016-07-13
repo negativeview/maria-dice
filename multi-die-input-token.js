@@ -29,8 +29,12 @@ class MultiDieInputToken {
 		this.innerDice = [];
 		for (var i = 0; i < this.rollConfiguration.number; i++) {
 			var singleDie = new SingleDieInputToken();
-			singleDie.rollConfiguration = this.rollConfiguration;
+			singleDie.rollConfiguration.size = this.rollConfiguration.size;
 			singleDie.rollConfiguration.number = 1;
+			singleDie.rollConfiguration.exploding = this.rollConfiguration.exploding;
+			singleDie.rollConfiguration.keep = this.rollConfiguration.keep;
+			singleDie.rollConfiguration.keepLow = this.rollConfiguration.keepLow;
+			singleDie.rollConfiguration.reroll = this.rollConfiguration.reroll;
 			singleDie.execute(this.rollGroup);
 			this.innerDice.push(singleDie);
 		}
