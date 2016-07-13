@@ -19,8 +19,8 @@ class RollInputGroupToken extends RollInputToken {
 				var ob = this.internal[i];
 				if (ob.execute) {
 					ob.execute();
-					this.explicitGroup.addRoll(ob);
 				}
+				this.explicitGroup.addRoll(ob);
 			}
 		}
 		console.log('post execute', this);
