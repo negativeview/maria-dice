@@ -3,6 +3,7 @@
 class ResultTokenDie {
 	constructor() {
 		this.numericResults = [];
+		this.rolls = 0;
 	}
 
 	addNumericResult(number) {
