@@ -34,6 +34,7 @@ class SingleDieInputToken {
 		var keepGoing = true;
 
 		this.resultToken = new ResultTokenDie();
+		this.resultToken.configuration = this.rollConfiguration;
 
 		while(keepGoing) {
 			keepGoing = false;
