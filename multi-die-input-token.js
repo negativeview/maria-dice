@@ -1,7 +1,6 @@
 "use strict";
 
 const RollConfiguration = require('./roll-configuration.js');
-const RollResult = require('./roll-result.js');
 const SingleDieInputToken = require('./single-die-input-token.js');
 
 class MultiDieInputToken {
@@ -50,7 +49,6 @@ class MultiDieInputToken {
 
 	execute() {
 		this.innerDice = [];
-		this.result = new RollResult();
 		for (var i = 0; i < this.rollConfiguration.number; i++) {
 			var singleDie = new SingleDieInputToken();
 			singleDie.rollConfiguration.size = this.rollConfiguration.size;
@@ -61,7 +59,6 @@ class MultiDieInputToken {
 
 			singleDie.execute();
 			this.innerDice.push(singleDie);
-			this.result.addResult(singleDie);
 		}
 
 		if (this.keep > 0) {
@@ -89,10 +86,6 @@ class MultiDieInputToken {
 				this.innerDice[index].keep = false;
 			}
 		}
-	}
-
-	getResult() {
-		return this.result;
 	}
 }
 

@@ -1,24 +1,18 @@
 const RollInputToken = require('./roll-input-token.js');
-const RollResult = require('./roll-result.js');
 
 class RollInputGroupToken extends RollInputToken {
 	constructor(data) {
 		data.type = 'group';
 		super(data);
 		this.operation = data.operation;
-		this.result = null;
 	}
 
 	execute() {
-		this.result = new RollResult();
 		for (var m = 0; m < this.repeat; m++) {
 			for (var i = 0; i < this.internal.length - 1; i++) {
 				var ob = this.internal[i];
 				if (ob.execute)
 					ob.execute();
-				if (ob.getResult) {
-					this.result.addResult(ob.getResult());
-				}
 			}
 		}
 	}
@@ -28,13 +22,6 @@ class RollInputGroupToken extends RollInputToken {
 	 **/
 	getAmount() {
 		var amount = 0;
-		this.result.getResults().map(
-			(currentValue, index, array) => {
-				if (currentValue.getAmount) {
-					amount += currentValue.getAmount();
-				}
-			}
-		);
 		return amount;
 	}
 
