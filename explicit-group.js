@@ -12,6 +12,7 @@ class ExplicitGroup {
 	}
 
 	keepHighLow() {
+		console.log('in explicitgroup-khl')
 		for (var i = 0; i < this.children; i++) {
 			var child = this.children[i];
 			if (child.keepHighLow) child.keepHighLow();

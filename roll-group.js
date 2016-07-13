@@ -29,6 +29,7 @@ class RollGroup {
 	}
 
 	keepHighLow() {
+		console.log('in rollgroup-khl')
 		if (!this.configuration.keep) return;
 
 		this._keepHighLow(
