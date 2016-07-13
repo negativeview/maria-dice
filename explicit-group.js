@@ -42,12 +42,12 @@ class ExplicitGroup {
 	}
 
 	_keepHigh(a, b) {
-		if (a.result > b.result) return true;
+		if (a.numericValue > b.numericValue) return true;
 		return false;
 	}
 
 	_keepLow(a, b) {
-		if (a.result < b.result) return true;
+		if (a.numericValue < b.numericValue) return true;
 		return false;
 	}
 
@@ -63,13 +63,12 @@ class ExplicitGroup {
 
 		console.log('in explicit group keep high low', toRemove);
 		while (toRemove) {
-			//console.log('ping');
 			var currentIndex = -1;
 
 			for (var i = 0; i < this.children.length; i++) {
 				var child = this.children[i];
-				if (child.why != 'basic-roll') continue;
 				if (child.rejected) continue;
+				if (child.why != 'basic-roll' && this.children[i].numericValue == undefined) continue;
 
 				if (currentIndex == -1) {
 					currentIndex = i;
@@ -83,11 +82,6 @@ class ExplicitGroup {
 
 			if (currentIndex !== -1) {
 				this.children[currentIndex].rejected = 'keep-high-low';
-				currentIndex++;
-				while (currentIndex < this.children.length && this.children[currentIndex].why != 'basic-roll') {
-					this.children[currentIndex].rejected = 'keep-high-low';
-					currentIndex++;
-				}
 			}
 			toRemove--;
 		}
