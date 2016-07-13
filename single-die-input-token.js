@@ -55,7 +55,7 @@ class SingleDieInputToken {
 				keepGoing = true;
 				nextWhy = 'exploded';
 			}
-			if (this.rollConfiguration.reroll.max !== -1 && rerolls > this.rollConfiguration.reroll.max) {
+			if (this.rollConfiguration.reroll.max !== -1 && rerolls >= this.rollConfiguration.reroll.max) {
 				keepGoing = false;
 			}
 
