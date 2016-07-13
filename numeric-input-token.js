@@ -19,7 +19,7 @@ class NumericInputToken extends InputToken {
 	getResult() {
 		return {
 			type: 'raw-number',
-			numericValue: this.number
+			numericValue: this.number,
 			rejected: this.rejected
 		};
 	}
