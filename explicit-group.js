@@ -2,13 +2,13 @@
 
 class ExplicitGroup {
 	constructor() {
-		this.type = 'explicit-group';
+		this.type = 'group';
 		this.configuration = {};
-		this.rolls = [];
+		this.children = [];
 	}
 
-	addRoll(roll) {
-		this.rolls.push(roll);
+	addChild(roll) {
+		this.children.push(roll);
 	}
 
 	keepHighLow() {
@@ -32,8 +32,8 @@ class ExplicitGroup {
 
 	_keepHighLow(comparator, numKeep) {
 		var numBasics = 0;
-		for (var i = 0; i < this.rolls.length; i++) {
-			if (this.rolls[i].why == 'basic-roll') numBasics++;
+		for (var i = 0; i < this.children.length; i++) {
+			if (this.children[i].why == 'basic-roll') numBasics++;
 		}
 
 		var toRemove = numBasics - numKeep;
@@ -41,26 +41,26 @@ class ExplicitGroup {
 		while (toRemove) {
 			var currentIndex = -1;
 
-			for (var i = 0; i < this.rolls.length; i++) {
-				var roll = this.rolls[i];
-				if (roll.why != 'basic-roll') continue;
-				if (roll.rejected) continue;
+			for (var i = 0; i < this.children.length; i++) {
+				var child = this.children[i];
+				if (child.why != 'basic-roll') continue;
+				if (child.rejected) continue;
 
 				if (currentIndex == -1) {
 					currentIndex = i;
 					continue;
 				}
 
-				if (comparator(this.rolls[currentIndex], this.rolls[i])) {
+				if (comparator(this.children[currentIndex], this.children[i])) {
 					currentIndex = i;
 				}
 			}
 
 			if (currentIndex !== -1) {
-				this.rolls[currentIndex].rejected = 'keep-high-low';
+				this.children[currentIndex].rejected = 'keep-high-low';
 				currentIndex++;
-				while (currentIndex < this.rolls.length && this.rolls[currentIndex].why != 'basic-roll') {
-					this.rolls[currentIndex].rejected = 'keep-high-low';
+				while (currentIndex < this.children.length && this.children[currentIndex].why != 'basic-roll') {
+					this.children[currentIndex].rejected = 'keep-high-low';
 					currentIndex++;
 				}
 			}
