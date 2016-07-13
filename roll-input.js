@@ -51,6 +51,10 @@ class RollInput {
 		this.tokenObjects.push(token);
 	}
 
+	getResult() {
+		return this.tokenObjects;
+	}
+
 	execute() {
 		while(true) {
 			var didUpdate = false;
@@ -69,62 +73,6 @@ class RollInput {
 			if (ob.execute)
 				ob.execute();
 		}
-
-		console.log('tokenObjects', this.tokenObjects);
-	}
-
-	/**
-	 * TODO: Make this able to do different formats?
-	 * Actually, probably move formatting out into another place...
-	 **/
-	formatResult(user) {
-		var diceFormat = 'standard';
-		if (user) {
-			var userOverride = user.getSetting('diceFormat');
-			if (userOverride) diceFormat = userOverride;
-		}
-
-		if (this['_format_' + diceFormat] && typeof(this['_format_' + diceFormat]) == 'function') {
-			return this['_format_' + diceFormat]();
-		}
-
-		return this['_format_standard']();
-	}
-
-	_format_simple() {
-		var total = 0;
-		var modifier = 1;
-
-		for (var i = 0; i < this.tokenObjects.length; i++) {
-			total += this.tokenObjects[i].totalAdjustment() * modifier;
-			modifier = 1;
-			modifier = this.tokenObjects[i].modifier(modifier);
-		}
-
-		return total;		
-	}
-
-	_format_standard() {
-		var result = '';
-		var total = 0;
-		var modifier = 1;
-
-		for (var i = 0; i < this.tokenObjects.length; i++) {
-			if (i != 0) {
-				result += ' ';
-			}
-			if (this.tokenObjects[i].formatResult)
-				result += this.tokenObjects[i].formatResult();
-			if (this.tokenObjects[i].getAmount)
-				total += this.tokenObjects[i].getAmount() * modifier;
-			modifier = 1;
-			if (this.tokenObjects[i].modifier)
-				modifier = this.tokenObjects[i].modifier(modifier);
-		}
-		result += ' = ';
-		result += total;
-
-		return result;
 	}
 }
 

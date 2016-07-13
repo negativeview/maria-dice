@@ -30,9 +30,9 @@ class RollInputGroupToken extends RollInputToken {
 		var amount = 0;
 		this.result.getResults().map(
 			(currentValue, index, array) => {
-				console.log('currentValue', currentValue);
-				if (currentValue.getAmount)
+				if (currentValue.getAmount) {
 					amount += currentValue.getAmount();
+				}
 			}
 		);
 		return amount;
