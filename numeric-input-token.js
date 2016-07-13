@@ -5,6 +5,7 @@ class NumericInputToken extends InputToken {
 		super();
 		this.number = parseInt(number);
 		this.type = 'number';
+		this.rejected = null;
 	}
 
 	formatResult() {
@@ -19,6 +20,7 @@ class NumericInputToken extends InputToken {
 		return {
 			type: 'raw-number',
 			numericValue: this.number
+			rejected: this.rejected
 		};
 	}
 
