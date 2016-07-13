@@ -15,7 +15,7 @@ class RollGroup {
 		if (!this.configuration.keep) return;
 
 		this._keepHighLow(
-			this.configuration.keepLow ? this._keepLow : this._keepHigh
+			this.configuration.keepLow ? this._keepLow : this._keepHigh,
 			this.configuration.keep
 		);
 		console.log('keepHighLow', this.configuration, this.rolls);
