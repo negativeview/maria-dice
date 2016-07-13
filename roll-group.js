@@ -19,7 +19,6 @@ class RollGroup {
 			this.configuration.keepLow ? this._keepLow : this._keepHigh,
 			this.configuration.keep
 		);
-		console.log('keepHighLow', this.configuration, this.rolls);
 	}
 
 	_keepHigh(a, b) {

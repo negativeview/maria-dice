@@ -15,6 +15,13 @@ class NumericInputToken extends InputToken {
 		return this.number;
 	}
 
+	getResult() {
+		return {
+			type: 'raw-number',
+			number: this.number
+		};
+	}
+
 	toValue() {
 		return this.number;
 	}
