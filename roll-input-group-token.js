@@ -44,6 +44,10 @@ class RollInputGroupToken {
 			for (var i = index + 1; i < arr.length; i++) {
 				if (arr[i].operation == 'end') {
 					this.rollConfiguration = arr[i].rollConfiguration;
+					delete this.rollConfiguration.size;
+					delete this.rollConfiguration.number;
+					delete this.rollConfiguration.reroll;
+					delete this.rollConfiguration.exploding;
 					this.operation = 'full-group';
 					this._doGroup(arr, index + 1, i);
 
