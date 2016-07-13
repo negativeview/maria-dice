@@ -2,13 +2,11 @@
 
 const ExplicitGroup = require('./explicit-group.js');
 const RollConfiguration = require('./roll-configuration.js');
-const RollInputToken = require('./roll-input-token.js');
 
-class RollInputGroupToken extends RollInputToken {
+class RollInputGroupToken {
 	constructor(data) {
 		this.rollConfiguration = new RollConfiguration();
 		data.type = 'group';
-		super(data);
 		this.operation = data.operation;
 		this.explicitGroup = null;
 	}

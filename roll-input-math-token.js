@@ -1,7 +1,7 @@
-const RollInputToken = require('./roll-input-token.js');
+"use strict";
 
-class RollInputMathToken extends RollInputToken {
-	constructor(data) {
+class RollInputMathToken {
+	constructor() {
 		data.type = 'math';
 		super(data);
 		this.token = data.token;
