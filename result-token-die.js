@@ -14,7 +14,20 @@ class ResultTokenDie {
 			{
 				enumerable: true,
 				get: () => {
-					return '(' + this.numericResults.join(', ') + ')';
+					var rollString = this.configuration.number + 'd' + this.configuration.size;
+					if (this.configuration.exploding)
+						rollString += '!';
+					if (this.configuration.keep) {
+						rollString += 'k';
+						rollString += this.configuration.keepLow ? 'h' : 'l';
+						rollString += this.configuration.keep;
+					}
+					if (this.configuration.reroll.enabled) {
+						rollString += 'r';
+						rollString += this.configuration.reroll.max == 1 ? 'o' : '';
+						rollString += '<' + this.configuration.reroll.breakpoint;
+					}
+					return rollString + ' (' + this.numericResults.join(', ') + ')';
 				}
 			}
 		);
