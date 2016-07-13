@@ -16,6 +16,7 @@ class RollResult {
 
 		for (var i = 0; i < this.results.length; i++) {
 			var item = this.results[i];
+			console.log('top level item', item);
 			switch (typeof(item)) {
 				case 'number':
 					res.push(item);
