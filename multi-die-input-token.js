@@ -1,15 +1,12 @@
+"use strict";
+
+const RollConfiguration = require('./roll-configuration.js');
 const RollResult = require('./roll-result.js');
 const SingleDieInputToken = require('./single-die-input-token.js');
 
 class MultiDieInputToken {
-	constructor(dieNumber, dieSize) {
-		this.dieNumber   = dieNumber;
-		this.dieSize     = dieSize;
-		this.rerollBreak = -1;
-		this.maxRerolls  = -1;
-		this.keep        = -1;
-		this.exploding   = false;
-		this.keepLow     = false;
+	constructor() {
+		this.rollConfiguration = new RollConfiguration();
 		this.result      = null;
 		this.innerDice   = [];
 		this.type = 'multi-die';

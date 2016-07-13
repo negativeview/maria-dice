@@ -1,11 +1,9 @@
+const RollConfiguration = require('./roll-configuration.js');
 const RollResult = require('./roll-result.js');
 
 class SingleDieInputToken {
-	constructor(dieSize) {
-		this.dieSize = dieSize;
-		this.exploding = false;
-		this.rerollBreak = -1;
-		this.maxRerolls = -1;
+	constructor() {
+		this.rollConfiguration = new RollConfiguration();
 		this.result = null;
 		this.type = 'single-die';
 	}
