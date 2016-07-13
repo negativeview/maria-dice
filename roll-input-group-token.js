@@ -21,7 +21,7 @@ class RollInputGroupToken {
 					ob.execute();
 				}
 				if (ob.type !== 'math')
-					this.explicitGroup.addRoll(ob);
+					this.explicitGroup.addChild(ob);
 			}
 		}
 		console.log('post execute', this);
