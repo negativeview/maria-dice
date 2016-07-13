@@ -10,7 +10,7 @@ class SingleDieInputToken {
 
 	formatResult() {
 		console.log('in format results', this.result);
-		var res = '1d' + this.dieSize + ' (';
+		var res = '1d' + this.rollConfiguration.dieSize + ' (';
 		res += this.formatResultSimple();
 		res += ')';
 		return res;
@@ -32,7 +32,7 @@ class SingleDieInputToken {
 	execute() {
 		this.result = new RollResult();
 
-		var max = this.dieSize;
+		var max = this.rollConfiguration.dieSize;
 		var min = 1;
 		var rerolls = 0;
 
@@ -44,11 +44,9 @@ class SingleDieInputToken {
 			var dieResult = Math.floor(Math.random() * (max - min + 1)) + min;
 			this.result.addResult(dieResult);
 
-			if (this.rerollBreak > 0 && dieResult < this.rerollBreak) keepGoing = true;
-			if (this.exploding && dieResult == this.dieSize) keepGoing = true;
-			if (this.maxRerolls !== -1 && rerolls > this.maxRerolls) keepGoing = false;
-
-			console.log('single die debug', 'exploding: ' + this.exploding, 'result: ' + dieResult, 'keepGoing: ' + keepGoing);
+			if (this.rollConfiguration.rerollBreak > 0 && dieResult < this.rollConfiguration.rerollBreak) keepGoing = true;
+			if (this.rollConfiguration.exploding && dieResult == this.rollConfiguration.dieSize) keepGoing = true;
+			if (this.rollConfiguration.maxRerolls !== -1 && rerolls > this.rollConfiguration.maxRerolls) keepGoing = false;
 
 			rerolls++;
 		}
