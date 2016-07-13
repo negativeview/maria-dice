@@ -12,6 +12,7 @@ class ResultTokenDie {
 			this.format,
 			'simple',
 			{
+				enumerable: true,
 				get: () => {
 					return '(' + this.numericResults.join(', ') + ')';
 				}
