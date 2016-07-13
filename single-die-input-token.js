@@ -57,6 +57,7 @@ class SingleDieInputToken {
 			}
 			if (this.rollConfiguration.reroll.max !== -1 && rerolls >= this.rollConfiguration.reroll.max) {
 				keepGoing = false;
+				rejected = null;
 			}
 
 			var roll = new Roll();
