@@ -55,7 +55,7 @@ class ExplicitGroup {
 		console.log('in explicit group keep high low, before deciding');
 		var numBasics = 0;
 		for (var i = 0; i < this.children.length; i++) {
-			if (this.children[i].why == 'basic-roll') numBasics++;
+			if (this.children[i].why == 'basic-roll' || this.children[i].numericValue !== undefined) numBasics++;
 		}
 
 		var toRemove = numBasics - numKeep;
