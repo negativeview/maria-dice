@@ -1,7 +1,12 @@
+"use strict";
+
+const TotalResult = require('./total-result.js');
+
 class RollInput {
 	constructor(data) {
 		this.description = data ? data.description ? data.description : '' : '';
 		this.tokenObjects = new Array();
+		this.result = null;
 
 		Object.defineProperty(
 			this,
@@ -52,10 +57,11 @@ class RollInput {
 	}
 
 	getResult() {
-		return this.tokenObjects;
+		return this.result;
 	}
 
 	execute() {
+		this.result = new TotalResult();
 		while(true) {
 			var didUpdate = false;
 			for (var i = 0; i < this.tokenObjects.length; i++) {
@@ -70,8 +76,12 @@ class RollInput {
 
 		for (var i = 0; i < this.tokenObjects.length; i++) {
 			var ob = this.tokenObjects[i];
-			if (ob.execute)
+			if (ob.execute) {
 				ob.execute();
+			}
+			if (ob.getResultToken) {
+				this.result.addPart(ob.getResultToken());
+			}
 		}
 	}
 }
