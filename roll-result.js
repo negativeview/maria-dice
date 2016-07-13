@@ -15,7 +15,7 @@ class RollResult {
 		var res = [];
 
 		for (var i = 0; i < this.results.length; i++) {
-			var item = this.rseults[i];
+			var item = this.results[i];
 			switch (typeof(item)) {
 				case 'number':
 					res.push(item);
