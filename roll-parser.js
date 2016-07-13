@@ -319,12 +319,15 @@ class RollParser {
 					break;
 				case 'die':
 					if (token.number == 1) {
-						var t = new SingleDieInputToken(token.dieSize);
+						var t = new SingleDieInputToken();
+						t.rollConfiguration.size = token.dieSize;
 						lastCommentable = t;
 						lastOnePlusDice = t;
 						lastMultiDice = t;
 					} else {
-						var t = new MultiDieInputToken(token.number, token.dieSize);
+						var t = new MultiDieInputToken();
+						t.rollConfiguration.number = token.number;
+						t.rollConfiguration.size = token.dieSize;
 						lastCommentable = t;
 						lastMultiDice = t;
 						lastOnePlusDice = t;
