@@ -5,6 +5,7 @@ class RollGroup {
 		this.configuration = {};
 		this.rolls = [];
 		this.label = '';
+		this.type = 'roll-group';
 	}
 
 	addRoll(roll) {
