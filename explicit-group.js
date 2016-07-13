@@ -58,6 +58,7 @@ class ExplicitGroup {
 		}
 
 		var toRemove = numBasics - numKeep;
+		if (toRemove <= 0) return;
 
 		console.log('in explicit group keep high low', toRemove);
 		while (toRemove) {
