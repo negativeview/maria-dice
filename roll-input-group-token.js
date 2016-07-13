@@ -13,6 +13,7 @@ class RollInputGroupToken {
 
 	execute() {
 		this.explicitGroup = new ExplicitGroup();
+		this.explicitGroup.configuration = this.rollConfiguration;
 
 		for (var m = 0; m < this.repeat; m++) {
 			for (var i = 0; i < this.internal.length - 1; i++) {

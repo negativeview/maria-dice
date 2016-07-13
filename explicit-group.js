@@ -5,6 +5,22 @@ class ExplicitGroup {
 		this.type = 'group';
 		this.configuration = {};
 		this.children = [];
+
+		Object.defineProperty(
+			this,
+			'numericValue',
+			{
+				enumerable: true,
+				get: () => {
+					var value = 0;
+					for (var i = 0; i < this.children.length; i++) {
+						if (!this.children[i].rejected)
+							value += this.children[i].numericValue;
+					}
+					return value;
+				}
+			}
+		);
 	}
 
 	addChild(roll) {
@@ -12,7 +28,6 @@ class ExplicitGroup {
 	}
 
 	keepHighLow() {
-		console.log('in explicitgroup-khl')
 		for (var i = 0; i < this.children.length; i++) {
 			var child = this.children[i];
 			if (child.keepHighLow) child.keepHighLow();
