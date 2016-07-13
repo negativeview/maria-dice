@@ -20,7 +20,8 @@ class RollInputGroupToken extends RollInputToken {
 				if (ob.execute) {
 					ob.execute();
 				}
-				this.explicitGroup.addRoll(ob);
+				if (ob.type !== 'math')
+					this.explicitGroup.addRoll(ob);
 			}
 		}
 		console.log('post execute', this);
