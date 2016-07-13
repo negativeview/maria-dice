@@ -3,7 +3,6 @@
 class ExplicitGroup {
 	constructor() {
 		this.type = 'explicit-group';
-		this.configuration = {};
 		this.rolls = [];
 	}
 
