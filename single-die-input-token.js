@@ -26,8 +26,8 @@ class SingleDieInputToken {
 			this.rollGroup = rollGroup;
 		} else {
 			this.rollGroup = new RollGroup();
+			this.rollGroup.configuration = this.rollConfiguration;
 		}
-		this.rollGroup.configuration = this.rollConfiguration;
 
 		var why = 'basic-roll';
 		var nextWhy = 'basic-roll';
