@@ -46,7 +46,7 @@ class SingleDieInputToken {
 
 			var dieResult = Math.floor(Math.random() * (max - min + 1)) + min;
 
-			if (this.rollConfiguration.rerollBreak > 0 && dieResult < this.rollConfiguration.rerollBreak) {
+			if (this.rollConfiguration.reroll.enabled && dieResult < this.rollConfiguration.reroll.breakpoint) {
 				keepGoing = true;
 				nextWhy = 'rolled-too-low';
 				rejected = 'rolled-too-low';
@@ -55,7 +55,7 @@ class SingleDieInputToken {
 				keepGoing = true;
 				nextWhy = 'exploded';
 			}
-			if (this.rollConfiguration.maxRerolls !== -1 && rerolls > this.rollConfiguration.maxRerolls) {
+			if (this.rollConfiguration.reroll.max !== -1 && rerolls > this.rollConfiguration.reroll.max) {
 				keepGoing = false;
 			}
 
