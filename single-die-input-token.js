@@ -37,24 +37,37 @@ class SingleDieInputToken {
 		this.rollGroup = new RollGroup();
 		this.rollGroup.configuration = this.rollConfiguration;
 
+		var why = 'basic-roll';
+		var nextWhy = 'basic-roll';
+
 		while(keepGoing) {
 			keepGoing = false;
 
 			var dieResult = Math.floor(Math.random() * (max - min + 1)) + min;
 
-			if (this.rollConfiguration.rerollBreak > 0 && dieResult < this.rollConfiguration.rerollBreak) keepGoing = true;
-			if (this.rollConfiguration.exploding && dieResult == this.rollConfiguration.size) keepGoing = true;
-			if (this.rollConfiguration.maxRerolls !== -1 && rerolls > this.rollConfiguration.maxRerolls) keepGoing = false;
+			if (this.rollConfiguration.rerollBreak > 0 && dieResult < this.rollConfiguration.rerollBreak) {
+				keepGoing = true;
+				nextWhy = 'rolled-too-low';
+			}
+			if (this.rollConfiguration.exploding && dieResult == this.rollConfiguration.size) {
+				keepGoing = true;
+				nextWhy = 'exploded';
+			}
+			if (this.rollConfiguration.maxRerolls !== -1 && rerolls > this.rollConfiguration.maxRerolls) {
+				keepGoing = false;
+			}
 
 			var roll = new Roll();
 			roll.configuration = this.rollConfiguration;
-			roll.why = 'why?';
+			roll.why = why;
 			roll.result = dieResult;
 			roll.rejected = null;
 
 			this.rollGroup.addRoll(roll);
 
 			rerolls++;
+
+			why = nextWhy;
 		}
 	}
 }
