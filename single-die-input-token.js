@@ -11,30 +11,22 @@ class SingleDieInputToken {
 		this.rollGroup = null;
 	}
 
-	formatResult() {
-		var res = '1d' + this.rollConfiguration.size + ' (';
-		res += this.formatResultSimple();
-		res += ')';
-		return res;
-	}
-
-	getAmount() {
-		var amount = 0;
-		return amount;
-	}
-
 	getResult() {
 		return this.rollGroup;
 	}
 
-	execute() {
+	execute(rollGroup) {
 		var max = this.rollConfiguration.size;
 		var min = 1;
 		var rerolls = 0;
 
 		var keepGoing = true;
 
-		this.rollGroup = new RollGroup();
+		if (rollGroup) {
+			this.rollGroup = rollGroup;
+		} else {
+			this.rollGroup = new RollGroup();
+		}
 		this.rollGroup.configuration = this.rollConfiguration;
 
 		var why = 'basic-roll';
