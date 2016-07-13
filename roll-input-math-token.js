@@ -2,7 +2,7 @@
 
 class RollInputMathToken {
 	constructor(data) {
-		data.type = 'math';
+		this.type = 'math';
 		this.token = data.token;
 	}
 
