@@ -79,8 +79,8 @@ class RollInput {
 			if (ob.execute) {
 				ob.execute();
 			}
-			if (ob.getResultToken) {
-				this.result.addPart(ob.getResultToken());
+			if (ob.getResult) {
+				this.result.addPart(ob.getResult());
 			}
 		}
 	}
