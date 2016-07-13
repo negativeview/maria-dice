@@ -13,6 +13,7 @@ class MultiDieInputToken {
 			'innerDice',
 			{
 				enumerable: false,
+				configurable: true,
 				value: []
 			}
 		);
