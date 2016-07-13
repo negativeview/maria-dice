@@ -272,15 +272,15 @@ class RollParser {
 					if (!lastMultiDice) {
 						console.log('Cannot modify with keep info without a die!');
 					} else {
-						lastMultiDice.keep = token.num;
+						lastMultiDice.rollConfiguration.keep = token.num;
 					}
 					break;
 				case 'keep-low':
 					if (!lastMultiDice) {
 						console.log('Cannot modify with keep info without a die!');
 					} else {
-						lastMultiDice.keep = token.num;
-						lastMultiDice.keepLow = true;
+						lastMultiDice.rollConfiguration.keep = token.num;
+						lastMultiDice.rollConfiguration.keepLow = true;
 					}
 					break;
 				case 'comment':
