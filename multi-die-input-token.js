@@ -24,7 +24,7 @@ class MultiDieInputToken {
 	}
 
 	formatResult() {
-		var res = this.dieNumber + 'd' + this.dieSize + ' (';
+		var res = this.rollConfiguration.number + 'd' + this.rollConfiguration.size + ' (';
 		res += this.result.getResults().map(
 			(currentValue, index, array) => {
 				var r = currentValue.formatResultSimple();
@@ -42,12 +42,13 @@ class MultiDieInputToken {
 	execute() {
 		this.innerDice = [];
 		this.result = new RollResult();
-		for (var i = 0; i < this.dieNumber; i++) {
-			var singleDie = new SingleDieInputToken(this.dieSize);
-			singleDie.exploding = this.exploding;
-			singleDie.rerollBreak = this.rerollBreak;
-			singleDie.maxRerolls = this.maxRerolls;
-			singleDie.keep = true;
+		for (var i = 0; i < this.rollConfiguration.number; i++) {
+			var singleDie = new SingleDieInputToken();
+			singleDie.rollConfiguration.size = this.rollConfiguration.size;
+			singleDie.rollConfiguration.exploding = this.rollConfiguration.exploding;
+			singleDie.rollConfiguration.rerollBreak = this.rollConfiguration.rerollBreak;
+			singleDie.rollConfiguration.maxRerolls = this.rollConfiguration.maxRerolls;
+			singleDie.rollConfiguration.keep = true;
 
 			singleDie.execute();
 			this.innerDice.push(singleDie);
@@ -67,10 +68,10 @@ class MultiDieInputToken {
 						continue;
 					}
 
-					if (this.keepLow && this.innerDice[i].getAmount() > this.innerDice[index].getAmount()) {
+					if (this.rollConfiguration.keepLow && this.innerDice[i].getAmount() > this.innerDice[index].getAmount()) {
 						index = i;
 					}
-					if (!this.keepLow && this.innerDice[i].getAmount() < this.innerDice[index].getAmount()) {
+					if (!this.rollConfiguration.keepLow && this.innerDice[i].getAmount() < this.innerDice[index].getAmount()) {
 						index = i;
 					}
 				}
