@@ -19,7 +19,7 @@ class ResultTokenDie {
 						rollString += '!';
 					if (this.configuration.keep) {
 						rollString += 'k';
-						rollString += this.configuration.keepLow ? 'h' : 'l';
+						rollString += this.configuration.keepLow ? 'l' : 'h';
 						rollString += this.configuration.keep;
 					}
 					if (this.configuration.reroll.enabled) {
