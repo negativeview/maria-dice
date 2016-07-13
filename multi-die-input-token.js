@@ -8,6 +8,7 @@ class MultiDieInputToken {
 	constructor() {
 		this.rollConfiguration = new RollConfiguration();
 		this.rollGroup = new RollGroup();
+		this.rollGroup.configuration = this.rollConfiguration;
 		Object.defineProperty(
 			this,
 			'innerDice',
