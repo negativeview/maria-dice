@@ -40,14 +40,16 @@ class SingleDieInputToken {
 		var why = 'basic-roll';
 		var nextWhy = 'basic-roll';
 
-		while(keepGoing) {
+		while (keepGoing) {
 			keepGoing = false;
+			var rejected = null;
 
 			var dieResult = Math.floor(Math.random() * (max - min + 1)) + min;
 
 			if (this.rollConfiguration.rerollBreak > 0 && dieResult < this.rollConfiguration.rerollBreak) {
 				keepGoing = true;
 				nextWhy = 'rolled-too-low';
+				rejected = 'rolled-too-low';
 			}
 			if (this.rollConfiguration.exploding && dieResult == this.rollConfiguration.size) {
 				keepGoing = true;
@@ -58,10 +60,9 @@ class SingleDieInputToken {
 			}
 
 			var roll = new Roll();
-			//roll.configuration = this.rollConfiguration;
 			roll.why = why;
 			roll.result = dieResult;
-			roll.rejected = null;
+			roll.rejected = rejected;
 
 			this.rollGroup.addRoll(roll);
 

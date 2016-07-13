@@ -249,16 +249,16 @@ class RollParser {
 					if (!lastOnePlusDice) {
 						console.log('Cannot reroll things that are not dice.');
 					} else {
-						lastOnePlusDice.rerollBreak = token.num;
-						lastOnePlusDice.maxRerolls = 100;
+						lastOnePlusDice.rollConfiguration.rerollBreak = token.num;
+						lastOnePlusDice.rollConfiguration.maxRerolls = 100;
 					}
 					break;
 				case 'ro<':
 					if (!lastOnePlusDice) {
 						console.log('Cannot reroll things that are not dice.');
 					} else {
-						lastOnePlusDice.rerollBreak = token.num;
-						lastOnePlusDice.maxRerolls = 1;
+						lastOnePlusDice.rollConfiguration.rerollBreak = token.num;
+						lastOnePlusDice.rollConfiguration.maxRerolls = 1;
 					}
 					break;				
 				case 'exploding':
