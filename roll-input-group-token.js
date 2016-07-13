@@ -48,6 +48,8 @@ class RollInputGroupToken extends RollInputToken {
 				}
 			}
 		}
+
+		console.log('post group', this);
 	}
 }
 
