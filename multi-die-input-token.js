@@ -14,6 +14,7 @@ class MultiDieInputToken extends NumericInputToken {
 		this.keepLow     = false;
 		this.result      = null;
 		this.innerDice   = [];
+		this.type = 'multi-die';
 	}
 
 	getAmount() {
