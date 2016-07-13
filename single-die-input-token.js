@@ -1,13 +1,14 @@
 "use strict";
 
-const ResultTokenDie = require('./result-token-die.js');
+const Roll = require('./roll.js');
 const RollConfiguration = require('./roll-configuration.js');
+const RollGroup = require('./roll-group.js');
 
 class SingleDieInputToken {
 	constructor() {
 		this.rollConfiguration = new RollConfiguration();
 		this.type = 'single-die';
-		this.resultToken = null;
+		this.rollGroup = null;
 	}
 
 	formatResult() {
@@ -22,8 +23,8 @@ class SingleDieInputToken {
 		return amount;
 	}
 
-	getResultToken() {
-		return this.resultToken;
+	getResult() {
+		return this.rollGroup;
 	}
 
 	execute() {
@@ -33,8 +34,8 @@ class SingleDieInputToken {
 
 		var keepGoing = true;
 
-		this.resultToken = new ResultTokenDie();
-		this.resultToken.configuration = this.rollConfiguration;
+		this.rollGroup = new RollGroup();
+		this.rollGroup.configuration = this.rollConfiguration;
 
 		while(keepGoing) {
 			keepGoing = false;
@@ -45,8 +46,13 @@ class SingleDieInputToken {
 			if (this.rollConfiguration.exploding && dieResult == this.rollConfiguration.size) keepGoing = true;
 			if (this.rollConfiguration.maxRerolls !== -1 && rerolls > this.rollConfiguration.maxRerolls) keepGoing = false;
 
-			this.resultToken.rolls++;
-			this.resultToken.addNumericResult(dieResult);
+			var roll = new Roll();
+			roll.configuration = this.rollConfiguration;
+			roll.why = 'why?';
+			roll.result = dieResult;
+			roll.rejected = NULL;
+
+			this.rollGroup.addRoll(roll);
 
 			rerolls++;
 		}
