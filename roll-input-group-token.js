@@ -17,14 +17,6 @@ class RollInputGroupToken extends RollInputToken {
 		}
 	}
 
-	/**
-	 * TODO: Handle kh1/kl1, etc.
-	 **/
-	getAmount() {
-		var amount = 0;
-		return amount;
-	}
-
 	_doGroup(arr, start, e) {
 		var end = arr[e];
 
@@ -56,37 +48,6 @@ class RollInputGroupToken extends RollInputToken {
 				}
 			}
 		}
-	}
-
-	formatTags() {
-		var res = '';
-		if (this.keep) {
-			if (this.keepLow) {
-				res += 'kl' + this.keep;
-			} else {
-				res += 'kh' + this.keep;
-			}
-		}
-		return res;
-	}
-
-	formatResult() {
-		var result = '';
-		if (this.repeat !== 1) {
-			result += this.repeat + ' ';
-		}
-		result += '{';
-		// NOTE: -1 because we don't want to formatResult on the ending token
-		for (var i = 0; i < this.internal.length - 1; i++) {
-			result += this.internal[i].formatResult();
-		}
-		result += '}';
-		result += this.internal[this.internal.length-1].formatTags();
-		return result;
-	}
-
-	toString() {
-		return this.operation;
 	}
 }
 
