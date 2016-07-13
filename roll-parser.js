@@ -1,6 +1,6 @@
 const lexer = require('lex');
 //const MultiDieInputToken = require('./multi-die-input-token.js');
-//const NumericInputToken = require('./numeric-input-token.js');
+const NumericInputToken = require('./numeric-input-token.js');
 const RollInput = require('./roll-input.js');
 //const RollInputDieToken = require('./roll-input-die-token.js');
 //const RollInputGroupToken = require('./roll-input-group-token.js');
