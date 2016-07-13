@@ -26,6 +26,10 @@ class RollInputGroupToken extends RollInputToken {
 		console.log('post execute', this);
 	}
 
+	getResult() {
+		return this.explicitGroup;
+	}
+
 	_doGroup(arr, start, e) {
 		var end = arr[e];
 
