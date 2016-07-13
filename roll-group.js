@@ -5,6 +5,7 @@ class RollGroup {
 		this.type = 'roll-group';
 		this.configuration = {};
 		this.rolls = [];
+		this.rejected = null;
 
 		Object.defineProperty(
 			this,
