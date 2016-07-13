@@ -2,7 +2,6 @@ const RollResult = require('./roll-result.js');
 
 class SingleDieInputToken {
 	constructor(dieSize) {
-		super(0);
 		this.dieSize = dieSize;
 		this.exploding = false;
 		this.rerollBreak = -1;
