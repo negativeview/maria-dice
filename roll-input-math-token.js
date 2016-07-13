@@ -18,7 +18,7 @@ class RollInputMathToken extends RollInputToken {
 	getResult() {
 		return {
 			type: 'symbol',
-			number: this.token
+			symbol: this.token
 		};
 	}
 
