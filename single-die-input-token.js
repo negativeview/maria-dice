@@ -58,7 +58,7 @@ class SingleDieInputToken {
 			}
 
 			var roll = new Roll();
-			roll.configuration = this.rollConfiguration;
+			//roll.configuration = this.rollConfiguration;
 			roll.why = why;
 			roll.result = dieResult;
 			roll.rejected = null;
