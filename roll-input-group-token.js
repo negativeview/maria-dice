@@ -15,6 +15,7 @@ class RollInputGroupToken extends RollInputToken {
 					ob.execute();
 			}
 		}
+		console.log('post execute', this);
 	}
 
 	_doGroup(arr, start, e) {
