@@ -5,6 +5,7 @@ class ExplicitGroup {
 		this.type = 'group';
 		this.configuration = {};
 		this.children = [];
+		this.rejected = null;
 
 		Object.defineProperty(
 			this,
