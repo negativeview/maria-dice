@@ -13,16 +13,29 @@ class RollInputGroupToken {
 
 	execute() {
 		this.explicitGroup = new ExplicitGroup();
-		this.explicitGroup.configuration = this.rollConfiguration;
 
-		for (var m = 0; m < this.repeat; m++) {
+		if (this.repeat > 1) {
+			for (var m = 0; m < this.repeat; m++) {
+				var g = new ExplicitGroup();
+				g.configuration = this.rollConfiguration;
+
+				for (var i = 0; i < this.internal.length - 1; i++) {
+					var ob = this.internal[i];
+					ob.execute();
+				}
+				if ((ob.type !== 'math' && ob.type !== 'symbol') && (ob.rollGroup || ob.getResult)) {
+					g.addChild(ob.rollGroup ? ob.rollGroup : ob.getResult());
+				}
+				this.explicitGroup.addChild(g);
+			}
+		} else {
+			this.explicitGroup.configuration = this.rollConfiguration;
 			for (var i = 0; i < this.internal.length - 1; i++) {
 				var ob = this.internal[i];
 				if (ob.execute) {
 					ob.execute();
 				}
 				if ((ob.type !== 'math' && ob.type !== 'symbol') && (ob.rollGroup || ob.getResult)) {
-					console.log('addingChild for', ob);
 					this.explicitGroup.addChild(ob.rollGroup ? ob.rollGroup : ob.getResult());
 				}
 			}
