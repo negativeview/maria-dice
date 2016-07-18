@@ -21,8 +21,9 @@ class RollInputGroupToken {
 
 				for (var i = 0; i < this.internal.length - 1; i++) {
 					var ob = this.internal[i];
-					console.log('ob', ob);
-					ob.execute();
+					if (ob.execute) {
+						ob.execute();
+					}
 				}
 				if ((ob.type !== 'math' && ob.type !== 'symbol') && (ob.rollGroup || ob.getResult)) {
 					g.addChild(ob.rollGroup ? ob.rollGroup : ob.getResult());
