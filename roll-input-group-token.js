@@ -24,9 +24,9 @@ class RollInputGroupToken {
 					if (ob.execute) {
 						ob.execute();
 					}
-				}
-				if ((ob.type !== 'math' && ob.type !== 'symbol') && (ob.rollGroup || ob.getResult)) {
-					g.addChild(ob.rollGroup ? ob.rollGroup : ob.getResult());
+					if ((ob.type !== 'math' && ob.type !== 'symbol') && (ob.rollGroup || ob.getResult)) {
+						g.addChild(ob.rollGroup ? ob.rollGroup : ob.getResult());
+					}
 				}
 				this.explicitGroup.addChild(g);
 			}
