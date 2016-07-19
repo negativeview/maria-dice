@@ -31,18 +31,6 @@ class RollInput {
 
 		Object.defineProperty(
 			this,
-			'toString',
-			{
-				enumerable: false,
-				writable: false,
-				value: () => {
-					return this.formatResult()
-				}
-			}
-		);
-
-		Object.defineProperty(
-			this,
 			'_numDice',
 			{
 				enumerable: false,
