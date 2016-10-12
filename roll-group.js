@@ -25,6 +25,27 @@ class RollGroup {
 	}
 
 	addRoll(roll) {
+		Object.defineProperty(
+			roll,
+			'kept',
+			{
+				enumerable: true,
+				get: () => {
+					return !roll.rejected;
+				}
+			}
+		);
+
+		Object.defineProperty(
+			roll,
+			'keptValue',
+			{
+				enumerable: true,
+				get: () => {
+					return roll.result;
+				}
+			}
+		);
 		this.rolls.push(roll);
 	}
 

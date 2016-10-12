@@ -1,3 +1,5 @@
+"use strict"
+
 const InputToken = require('./input-token.js');
 
 class NumericInputToken extends InputToken {

@@ -9,6 +9,28 @@ class ExplicitGroup {
 
 		Object.defineProperty(
 			this,
+			'kept',
+			{
+				enumerable: true,
+				get: () => {
+					return !!this.rejected;
+				}
+			}
+		);
+
+		Object.defineProperty(
+			this,
+			'keptValue',
+			{
+				enumerable: true,
+				get: () => {
+					return this.result;
+				}
+			}
+		);
+
+		Object.defineProperty(
+			this,
 			'numericValue',
 			{
 				enumerable: true,

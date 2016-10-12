@@ -1,3 +1,5 @@
+"use strict"
+
 const lexer = require('lex');
 const MultiDieInputToken = require('./multi-die-input-token.js');
 const NumericInputToken = require('./numeric-input-token.js');
